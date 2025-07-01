@@ -4,6 +4,9 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
+      fingerprint: {
+    prepend: 'https://bus-booking-client-64lxuqzuz-raghul-ts-projects.vercel.app/' // ← Replace with your actual deployed URL
+  },
     emberData: {
       deprecations: {
         // New projects can safely leave this deprecation disabled.
