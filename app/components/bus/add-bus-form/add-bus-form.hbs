@@ -1,0 +1,92 @@
+<html>
+  <head></head>
+  <body>
+
+    <div class="bus-form-container">
+
+      <br /><br />
+      <ul>
+        <h1>Add New Bus</h1>
+        <li>Bus Number: <input type="text" {{on "input" this.addBusNo}} /></li>
+        <li>Bus Type:
+          <select {{on "change" this.changeBusType}}>
+            <option disabled selected value>select type</option>
+            <option value="AC Sleeper">AC Sleeper</option>
+            <option value="Non-AC Sleeper">Non - AC Sleeper</option>
+            <option value="AC Seater">AC Seater</option>
+            <option value="Non-AC Seater">Non - AC Seater</option>
+          </select>
+        </li>
+        <li>Operator Name:
+          <input type="text" {{on "input" this.addOperatorName}} /></li>
+        <li>Total Columns:
+          <select {{on "change" this.addColumns}}>
+            <option selected disabled true>select</option>
+            <option value="3">3 Column Layout</option>
+            <option value="4">4 Column Layout</option>
+          </select>
+        </li>
+        {{!-- <button type="button" {{on "click" this.columnNext}}>Next</button> --}}
+      </ul>
+      <div class="seat-selection-container">
+        {{#if this.selectedColumns}}
+          {{#if (eq this.selectedColumns "3")}}
+            <div class="lower">
+
+              <div>
+                <input type="number" placeholder="Col - 1 Enter rows" 
+                {{on 'input' (fn this.handleColInput '1' 'LOWER')}}/>
+                {{!-- {{log this.seatLayout}}  <!-- Debugging --> --}}
+
+                {{#each this.seatLayout as |seat|}}
+                  
+
+                  {{#if (and (eq seat.colNumber 1) (eq seat.pos 'LOWER'))}}
+                    {{log seat}}
+                    {{#each seat.rows as |row_seat|}}
+                      <input type="text" placeholder="Col {{seat.colNumber}}, Row {{row_seat.rowNumber}}">
+                    {{/each}}
+                  {{/if}}
+                {{/each}}
+              </div>
+              <div>
+                <input type="number" placeholder="Col - 2 Enter rows" />
+              </div>
+              <div>
+                <input type="number" placeholder="Col - 3 Enter rows" />
+              </div>
+            </div>
+            <div class="upper">
+              <div>
+                <input type="number" placeholder="Col - 1 Enter rows" />
+              </div>
+              <div>
+                <input type="number" placeholder="Col - 2 Enter rows" />
+              </div>
+              <div>
+                <input type="number" placeholder="Col - 3 Enter rows" />
+              </div>
+            </div>
+          {{else}}
+            <div class="lower">
+              <div>
+                <input type="number" placeholder="Col - 1 Enter rows" />
+              </div>
+              <div>
+                <input type="number" placeholder="Col - 2 Enter rows" />
+              </div>
+              <div>
+                <input type="number" placeholder="Col - 3 Enter rows" />
+              </div>
+              <div>
+                <input type="number" placeholder="Col - 4 Enter rows" />
+              </div>
+            </div>
+          {{/if}}
+        {{/if}}
+      </div>
+
+    </div>
+
+  </body>
+</html>

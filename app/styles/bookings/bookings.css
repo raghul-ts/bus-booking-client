@@ -1,0 +1,81 @@
+.booking-page-container {
+  margin: 4rem 20px;
+  padding: 20px;
+  text-align: center;
+  color: #eee;
+}
+
+.bookings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.booking-card {
+  width: 80%;
+  background-color: #222831;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.booking-card:hover {
+  transform: scale(1.02);
+}
+
+.booking-details-table,
+.passenger-details-table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+  background-color: #393e46;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.booking-details-table th,
+.booking-details-table td,
+.passenger-details-table th,
+.passenger-details-table td {
+  padding: 12px;
+  border: 1px solid #00adb5;
+  text-align: center;
+}
+
+.booking-details-table th,
+.passenger-details-table th {
+  background-color: #00adb5;
+  color: #fff;
+}
+
+
+
+.booking-details-table td,
+.passenger-details-table td {
+  background-color: #222831;
+}
+
+h2 {
+  color: #00adb5;
+  margin-bottom: 2rem;
+}
+
+
+.cancel-ticket {
+    /* background-color: rgb(69, 12, 12) !important; */
+    background-color: #741e1e !important;
+}
+
+
+.cancel-ticket:hover {
+    background-color: rgb(206, 47, 47) !important;
+    cursor: pointer;
+    /* color: black; */
+}
+.cancelled-ticket {
+    background-color: #741e1e !important;
+    cursor: not-allowed;
+}

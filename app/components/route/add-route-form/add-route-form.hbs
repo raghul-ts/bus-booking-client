@@ -1,0 +1,40 @@
+<html>
+  <head></head>
+  <body>
+    <div>
+      <ul>
+        <h1>Add New Route</h1>
+        <li>Source City :
+          <select name="source" id="" {{on "input" this.handleInput}}>
+            <option disabled selected value>-</option>
+            {{#each this.allCities as |city|}}
+              <option value={{city.cityName}}>
+                {{city.cityName}}
+              </option>
+            {{/each}}
+          </select>
+        </li>
+        <li>Destination City :
+          <select name="destination" id="" {{on "input" this.handleInput}}>
+            <option disabled selected value>-</option>
+            {{#each this.allCities as |city|}}
+              <option value={{city.cityName}}>
+                {{city.cityName}}
+              </option>
+            {{/each}}
+          </select>
+        </li>
+        <li>
+            Distance Km: <input type="number" name="distance" id="" {{on "input" this.handleInput}}>
+        </li>
+        <li>
+            Estimated Time Travel <input name="timeTravel" type="time" {{on "input" this.handleInput}}>
+        </li>
+        <li>
+            <button type="button" {{on "click" this.addNewRoute}}>Add</button>
+        </li>
+      </ul>
+      
+    </div>
+  </body>
+</html>

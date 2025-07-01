@@ -1,0 +1,57 @@
+<html>
+  <head></head>
+  <body>
+    <div>
+      <ul>
+        <h1>Add New Schedule</h1>
+        <li>Journey Date:
+          <input
+            name="journeydate"
+            type="date"
+            {{on "input" this.handleInput}}
+          /></li>
+        
+        <li>Route:
+          <select {{on "change" (fn this.updateField "routeId")}}>
+            <option disabled selected value>select-route</option>
+            {{#each this.routes as |route|}}
+              <option
+                value={{route.routeId}}
+              >{{route.routeId}}---{{route.source}}---{{route.destination}}---{{route.distanceKm}}</option>
+            {{/each}}
+          </select>
+        </li>
+        
+        <li>Bus: 
+          <select {{on "change" (fn this.updateField "busId")}}>
+            <option disabled selected value>select-bus</option>
+            {{#each this.buses as |bus|}}
+              <option
+                value={{bus.busId}}
+              >{{bus.busId}}---{{bus.vehicleNumber}}---{{bus.busType}}---{{bus.operatorName}}</option>
+            {{/each}}
+          </select>
+        </li>
+        <li>Depature Time:
+          <input
+            name="deptime"
+            type="datetime-local"
+            {{on "input" this.handleInput}}
+          /></li>
+        <li>Arrival Time:
+          <input
+            name="arrivaltime"
+            type="datetime-local"
+            {{on "input" this.handleInput}}
+          /></li>
+        <li>Price:
+          <input
+            name="price"
+            type="number"
+            {{on "input" this.handleInput}}
+          /></li>
+        <li><button type="button" {{on "click" this.addNewSchedule}}>Add</button></li>
+      </ul>
+    </div>
+  </body>
+</html>

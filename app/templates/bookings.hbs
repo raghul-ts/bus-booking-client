@@ -1,0 +1,66 @@
+{{page-title "Bookings"}}
+{{outlet}}
+
+<div class="booking-page-container">
+  <h2>All Bookings</h2>
+  <div class="bookings-container">
+    {{#each this.bookings.bookings as |booking|}}
+      <div class="booking-card">
+        <table class="booking-details-table">
+          <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Boarding</th>
+            <th>Dropping</th>
+            <th>Operator</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+            <th>Date</th>
+            <th>Paid</th>
+          </tr>
+          <tr>
+            <td>{{booking.sourceCity}}</td>
+            <td>{{booking.destinationCity}}</td>
+            <td>{{booking.boardingLocation}}</td>
+            <td>{{booking.droppingLocation}}</td>
+            <td>{{booking.operatorName}}</td>
+            <td>{{booking.arrivalTime}}</td>
+            <td>{{booking.departureTime}}</td>
+            <td>{{booking.journeyDate}}</td>
+            <td>{{booking.totalAmount}}</td>
+          </tr>
+        </table>
+
+        <table class="passenger-details-table">
+          <tr>
+            <th>Seat Number</th>
+            <th>Passenger Name</th>
+            <th>Passenger Age</th>
+          </tr>
+          {{#each booking.passengerDetails as |passenger|}}
+            <tr>
+              <td>{{passenger.seatNumber}}</td>
+              <td>{{passenger.passengerName}}</td>
+              <td>{{passenger.passengerAge}}</td>
+              {{#if (eq passenger.status "t")}}
+                <td
+                  {{on
+                    "click"
+                    (fn this.cancelTicket passenger.scheduledSeatId)
+                  }}
+                  class="cancel-ticket"
+                >
+                Cancel</td>
+              {{else}}
+                <td class="cancelled-ticket">
+                  Cancelled
+                </td>
+              {{/if}}
+
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+    {{/each}}
+  </div>
+</div>

@@ -1,0 +1,38 @@
+{{page-title "AdminHome"}}
+{{outlet}}
+
+<div class="admin-container">
+
+  <div class="admin-panel">
+
+    <div class="sidebar">
+      <ul>
+        <h3>Admin Panel</h3>
+        <li {{on "click" (fn this.setActivePanel "user")}}>Add</li>
+        <li {{on "click" (fn this.setActivePanel "schedule")}}>Schedule</li>
+        <li {{on "click" (fn this.setActivePanel "route")}}>Route</li>
+        <li {{on "click" (fn this.setActivePanel "bus")}}>Bus</li>
+        <li {{on "click" (fn this.setActivePanel "city")}}>City</li>
+      </ul>
+    </div>
+
+    <div class="content">
+      {{#if (eq this.activePanel "user")}}
+        {{user/add-user-form}}
+      {{else if (eq this.activePanel "schedule")}}
+        {{schedule/schedule-form}}
+
+      {{else if (eq this.activePanel "route")}}
+        {{route/route-form}}
+
+      {{else if (eq this.activePanel "bus")}}
+        {{bus/bus-form}}
+
+      {{else if (eq this.activePanel "city")}}
+        {{city/add-city-form}}
+
+      {{/if}}
+    </div>
+  </div>
+
+</div>

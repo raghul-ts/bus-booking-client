@@ -1,0 +1,10 @@
+.seat-selection-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.lower, .upper {
+    display: flex;
+    justify-content: space-around;
+}

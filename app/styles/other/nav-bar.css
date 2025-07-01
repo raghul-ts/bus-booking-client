@@ -1,0 +1,53 @@
+.navbar-container {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: rgb(12 25 39);
+  font-size: larger;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 50%);
+}
+
+.navbar-elements {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  font-size: large;
+}
+
+.dropdown:hover .dropdown-content {
+  display: grid;
+}
+
+.dropdown-content {
+  display: none;
+  padding: 20px;
+  position: absolute;
+  box-shadow: 0 8px 16px rgb(0 0 0 / 50%);
+
+
+}
+
+.account-items {
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.account-items:hover {
+  background-color: #00adb5;
+  cursor: pointer;
+}
+
+.web-title, .web-logo {
+  cursor: pointer;
+}

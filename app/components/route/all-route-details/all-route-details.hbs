@@ -1,0 +1,64 @@
+<html>
+  <head></head>
+  <body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Route Id</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Distance KM</th>
+                    <th>Estimated Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.route.routes as |route|}}
+                <tr>
+                <td>{{route.routeId}}</td>
+                {{#if (eq this.currentRouteId route.routeId)}} 
+                    <td>
+                        <select {{ on "change" (fn this.updateField "editSource") }}>
+                             {{#each this.city.cities as |city|}}
+                             <option selected={{eq this.editSource city.cityName}} value={{city.cityName}}>{{city.cityName}}</option>
+                             {{/each}}
+                        </select>
+                    </td>
+                    <td>
+                        <select {{ on "change" (fn this.updateField "editDestination") }}>
+                             {{#each this.city.cities as |city|}}
+                             <option selected={{eq this.editDestination city.cityName}} value={{city.cityName}}>{{city.cityName}}</option>
+                             {{/each}}
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" value={{this.editDistance}}
+                        {{on "input" (fn this.updateField "editDistance")}}>
+                    </td>
+                    <td>
+                        <input type="time" value={{this.editTime}}
+                        {{on "input" (fn this.updateField "editTime")}}>
+                    </td>
+                    <td>
+                        <button type="button" {{on "click" (fn this.saveRoute route.routeId)}}>Save</button>
+                    </td>
+                    <td>
+                        <button type="button" {{ on "click" this.cancelRoute }}>Cancel</button>
+                    </td>
+                {{else}}
+                    <td>{{route.source}}</td>
+                    <td>{{route.destination}}</td>
+                    <td>{{route.distanceKm}}</td>
+                    <td>{{route.estimatedTime}}</td>
+                    <td><button type="button" {{on "click" (fn this.editRoute route)}}>Edit</button></td>
+                    <td><button type="button" {{on "click" (fn this.deleteRoute route.routeId)}}>Delete</button></td>
+                {{/if}}
+                </tr>
+                {{/each}}
+
+            </tbody>
+        </table>
+
+    </div>
+  </body>
+</html>

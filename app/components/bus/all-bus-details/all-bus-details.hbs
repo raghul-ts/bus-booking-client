@@ -1,0 +1,85 @@
+<html>
+  <head></head>
+  <body>
+    <div>
+      <table class="bus-table">
+        <thead>
+          <tr>
+            <th>Bus ID</th>
+            <th>Bus Number</th>
+            <th>Bus Type</th>
+            <th>Operator Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each this.bus.buses as |bus|}}
+            <tr>
+              <td>{{bus.busId}}</td>
+
+              {{#if (eq this.editingBusId bus.busId)}}
+                <td><input
+                    type="text"
+                    value={{this.editBusNo}}
+                    {{on "input" (fn this.updateField "editBusNo")}}
+                  /></td>
+                <td>
+                  <select {{on "change" (fn this.updateField "editBusType")}}>
+                    <option
+                      selected={{eq this.editBusType "AC Sleeper"}}
+                      value="AC Sleeper"
+                    >AC Sleeper</option>
+                    <option
+                      selected={{eq this.editBusType "Non-AC Sleeper"}}
+                      value="Non-AC Sleeper"
+                    >Non-AC Sleeper</option>
+                    <option
+                      selected={{eq this.editBusType "AC Seater"}}
+                      value="AC Seater"
+                    >AC Seater</option>
+                    <option
+                      selected={{eq this.editBusType "Non-AC Seater"}}
+                      value="Non-AC Seater"
+                    >Non-AC Seater</option>
+                  </select>
+                </td>
+                <td><input
+                    type="text"
+                    value={{this.editOperatorName}}
+                    {{on "input" (fn this.updateField "editOperatorName")}}
+                  /></td>
+                <td>
+                  <button
+                    type="button"
+                    {{on "click" (fn this.saveBus bus.busId)}}
+                  >Save</button>
+                  <button
+                    type="button"
+                    {{on "click" this.cancelEdit}}
+                  >Cancel</button>
+                </td>
+              {{else}}
+
+                <td>{{bus.vehicleNumber}}</td>
+                <td>{{bus.busType}}</td>
+                <td>{{bus.operatorName}}</td>
+                <td>
+                  <button
+                    type="button"
+                    {{on "click" (fn this.editBus bus)}}
+                  >Edit</button>
+                  <button
+                    type="button"
+                    {{on "click" (fn this.deleteBus bus.busId)}}
+                  >Delete</button>
+                </td>
+              {{/if}}
+
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+    </div>
+  </body>
+</html>

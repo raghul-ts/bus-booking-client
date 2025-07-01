@@ -1,0 +1,76 @@
+{{page-title "Home"}}
+{{outlet}}
+
+<div class="home-container">
+
+  <div class="bus-search-container">
+    <label>From
+      <select
+        {{on "change" this.setFromLocation}}
+        class="from-cities"
+        id="from-cities"
+      >
+        <option disabled selected value>From</option>
+        {{#each @model.cityData as |city|}}
+          <option
+            value={{city.cityName}}
+            selected={{eq city.cityName this.fromLocation}}
+          >{{city.cityName}}</option>
+        {{/each}}
+      </select>
+    </label>
+
+    <label>To
+      <select
+        {{on "change" this.setToLocation}}
+        class="to-cities"
+        id="to-cities"
+      >
+        <option disabled selected value>To</option>
+
+        {{#each @model.cityData as |city|}}
+          <option
+            value={{city.cityName}}
+            selected={{eq city.cityName this.toLocation}}
+          >{{city.cityName}}</option>
+        {{/each}}
+      </select>
+    </label>
+    <label>Date Of Journey
+      <input
+        class="doj-input"
+        type="date"
+        {{on "input" this.updateDate}}
+        value={{this.date}}
+      /></label>
+    <button
+      class="bus-search-btn"
+      type="button"
+      {{on "click" this.searchBus}}
+    >🔍︎</button>
+
+  </div>
+  <div class="bus-result-container">
+
+    {{#if this.busdetails}}
+      <div class="bus-list">
+        {{#each this.busdetails as |bus|}}
+          <div class="bus-card">
+            <h3><strong>Bus Number:</strong> {{bus.busNumber}}</h3>
+            <p><strong>Type:</strong> {{bus.busType}}</p>
+            <p><strong>Departure:</strong> {{bus.departureTime}}</p>
+            <p><strong>Arrival:</strong> {{bus.arrivalTime}}</p>
+            <p><strong>Available Seats:</strong> {{bus.availableSeats}}</p>
+            <p><strong>Price: </strong>₹{{bus.price}}</p>
+            <p><strong>Operator Name:</strong> {{bus.operatorName}}</p>
+            <p><strong>Distance Km:</strong> {{bus.distanceKm}}</p>
+            <button class="bus-card-book-btn" type="button" {{on "click" (fn this.bookNow bus)}}>Book</button>
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+  </div>
+
+</div>
+
+

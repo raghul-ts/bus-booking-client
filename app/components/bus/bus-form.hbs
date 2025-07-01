@@ -1,0 +1,29 @@
+<html>
+  <head></head>
+  <body>
+    <div>
+      <div>
+        ****UNDER DEVELOPMENT****
+        <br>
+        <button type="button" {{on "click" this.toggleBusList}}>
+          {{if this.showBusList "⬆ Hide All Buses" "⬇ View All Buses"}}
+        </button>
+
+        {{#if this.showBusList}}
+          {{bus/all-bus-details/all-bus-details}}
+        {{/if}}
+      </div>
+      <br />
+      <div>
+
+        <button type="button" {{on "click" this.toggleBusForm}}>
+          {{if this.showBusForm "⬆ Hide Form" "⬇ Add New Bus"}}
+        </button>
+
+        {{#if this.showBusForm}}
+          {{bus/add-bus-form/add-bus-form}}
+        {{/if}}
+      </div>
+    </div>
+  </body>
+</html>

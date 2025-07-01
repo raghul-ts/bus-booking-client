@@ -1,0 +1,93 @@
+<div class="seat-layout-container">
+
+  {{#if this.lower}}
+    <div class="deck-container">
+      <h3>Lower</h3>
+      <br />
+      <div class="seat-container">
+        {{#each this.lowerSeats as |col|}}
+          {{#if
+            (or
+              (and (eq col.colNumber 2) (eq this.totalColumns 3))
+              (and (eq col.colNumber 3) (eq this.totalColumns 4))
+            )
+          }}
+            <div>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+          {{/if}}
+          <div class="seat-column-container">
+
+            {{#each col.col_seats as |seat|}}
+              <div
+                class="seat-item
+                  {{if
+                    (eq seat.status 't')
+                    'seat-booked'
+                    (if
+                      (this.isSeatSelected seat)
+                      'seat-selected'
+                      'seat-available'
+                    )
+                  }}"
+                {{on "click" (fn this.toggleSeat seat)}}
+              >
+                {{#if (eq seat.seatTypeId 1)}}
+                  <img src="../assets/images/car-seat.png" alt="" />
+                {{/if}}
+                {{#if (eq seat.seatTypeId 3)}}
+                  <img src="../assets/images/single-bed.png" alt="" />
+                {{/if}}
+              </div>
+            {{/each}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+  {{#if this.upper}}
+    <div class="deck-container">
+      <h3>Upper</h3>
+      <br />
+      <div class="seat-container">
+
+        {{#each this.upperSeats as |col|}}
+          {{#if
+            (or
+              (and (eq col.colNumber 2) (eq this.totalColumns 3))
+              (and (eq col.colNumber 3) (eq this.totalColumns 4))
+            )
+          }}
+            <div>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+          {{/if}}
+          <div class="seat-column-container">
+            {{#each col.col_seats as |seat|}}
+              <div
+                class="seat-item
+                  {{if
+                    (eq seat.status 't')
+                    'seat-booked'
+                    (if
+                      (this.isSeatSelected seat)
+                      'seat-selected'
+                      'seat-available'
+                    )
+                  }}"
+                {{on "click" (fn this.toggleSeat seat)}}
+              >
+                {{#if (eq seat.seatTypeId 1)}}
+                  <img src="../assets/images/car-seat.png" alt="" />
+                {{/if}}
+                {{#if (eq seat.seatTypeId 3)}}
+                  <img src="../assets/images/single-bed.png" alt="" />
+                {{/if}}
+              </div>
+            {{/each}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  {{/if}}
+</div>

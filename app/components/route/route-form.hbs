@@ -1,0 +1,25 @@
+<html>
+    <head></head>
+    <body>
+        <div>
+            {{!-- all route details --}}
+            <div>
+                <button type="button" {{on "click" this.toggleRouteList}}>
+                    {{if this.showRouteList "Hide All Route" "Show All Routes"}}
+                </button>
+                {{#if this.showRouteList}}
+                    {{route/all-route-details/all-route-details}}
+                {{/if}}
+            </div>
+            {{!-- add route form --}}
+            <div>
+                <button type="button" {{on "click" this.toggleRouteForm}}>
+                    {{if this.showRouteForm "Hide Form" "Add Routes"}}
+                </button>
+                {{#if this.showRouteForm}}
+                    {{route/add-route-form/add-route-form}}
+                {{/if}}
+            </div>
+        </div>
+    </body>
+</html>

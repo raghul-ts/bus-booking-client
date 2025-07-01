@@ -1,0 +1,27 @@
+/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+
+@import url('home/home.css');
+@import url('other/auth.css');
+@import url('other/nav-bar.css');
+@import url('home/admin-home.css');
+@import url('bus/all-bus-details.css');
+@import url('bookings/book-bus.css');
+@import url('bookings/bookings.css');
+@import url('bus/seat-layout.css');
+@import url('user/user.css');
+@import url('bus/add-bus.css');
+* {
+    margin: 0;
+}
+
+body {
+    background-color: #222831;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #EEE;
+}
+
+img {
+    height: 30px;
+    width: 30px;
+}
+

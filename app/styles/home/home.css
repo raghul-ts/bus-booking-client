@@ -1,0 +1,99 @@
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.home-container {
+  margin-top: 4rem;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding: 20px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.bus-search-container {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.from-cities,
+.to-cities,
+.doj-input, .select-option {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  background-color: #222831;
+  color: #eee;
+  border: 1px solid #00adb5;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgb(173 161 161 / 20%);
+  cursor: pointer;
+}
+
+.bus-search-btn {
+  background-color: #00adb5;
+  color: white;
+  margin-top: 1.2rem;
+
+  /* font-weight: bold; */
+  cursor: pointer;
+  border-radius: 8px;
+  border: 0;
+  text-align: center;
+  transition: transform 0.3s ease;
+  width: 7%;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.bus-card-book-btn {
+  height: 30px;
+  width: 100px;
+  cursor: pointer;
+  background-color: #00adb5;
+  border: 0;
+  transition: transform 0.3s ease;
+  box-shadow: #222831;
+  color: white;
+  font-weight: bold;
+}
+
+.bus-search-btn:hover,
+.bus-card-book-btn:hover {
+  transform: scale(1.2);
+}
+
+.bus-list {
+  margin: 20px;
+  padding: 10px;
+}
+
+.bus-card {
+  /* display: flex;
+  justify-content: space-around; */
+  margin: 2% 10%;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 50%);
+  transition: transform 0.3s ease;
+  background-color: #222831;
+}
+
+.bus-card p {
+  margin: 1.3rem;
+  color: whitesmoke;
+}
+
+.bus-card:hover {
+  transform: scale(1.03);
+}
+
+
+
+.bus-card strong {
+  color: #00adb5;
+}
+

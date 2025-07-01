@@ -1,0 +1,34 @@
+{{yield}}
+
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="navbar-container">
+
+      <ul class="navbar-elements">
+        <li class="web-logo" {{on "click" this.moveHome}}>Logo</li>
+        <li class="web-title" {{on "click" this.moveHome}}>Fly-Bus</li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn" type="button">Account</button>
+            <div class="dropdown-content">
+              <LinkTo @route="login" class="account-items">
+                Profile
+              </LinkTo>
+              {{#if (eq this.session.user.roleId 3)}}
+              <LinkTo @route="bookings" class="account-items">
+                Bookings
+              </LinkTo>
+              {{/if}}
+              {{#if this.session.user}}
+                <a class="account-items" {{on "click" this.logout}}>Logout</a>
+              {{/if}}
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </body>
+</html>

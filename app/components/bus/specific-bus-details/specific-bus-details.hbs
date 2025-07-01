@@ -1,0 +1,124 @@
+<div class="book-bus-container">
+
+  {{#if @model.schedule}}
+
+    <div class="bus-info">
+      <p><strong>Operator Name:</strong> {{@model.schedule.operatorName}}</p>
+      <p><strong>Bus Type:</strong> {{@model.schedule.busType}}</p>
+      <p><strong>Bus Number:</strong> {{@model.schedule.busNumber}}</p>
+      <p><strong>Source:</strong> {{@model.schedule.source}}</p>
+      <p><strong>Destination:</strong> {{@model.schedule.destination}}</p>
+      <p><strong>Departure:</strong> {{@model.schedule.departureTime}}</p>
+      <p><strong>Arrival:</strong> {{@model.schedule.arrivalTime}}</p>
+    </div>
+
+    <div>
+      <div class="seat-layout-section">
+        <h2>Select Your Seat</h2>
+
+        {{bus/seat-layout/seat-layout}}
+
+      </div>
+      <br /><br />
+
+    </div>
+    <div>
+
+      <div class="seat-legend">
+        <div class="legend-item">
+          <span class="seat-box seat-available"></span>
+          <span>Available</span>
+        </div>
+        <div class="legend-item">
+          <span class="seat-box seat-selected"></span>
+          <span>Selected</span>
+        </div>
+        <div class="legend-item">
+          <span class="seat-box seat-booked"></span>
+          <span>Booked</span>
+        </div>
+      </div>
+
+      <div>
+        <h3>
+          Payable amount:
+          {{this.bookingData.payAmount}}
+        </h3>
+      </div>
+
+      <div class="boarding-dropping">
+        <div class="dropdown-group">
+          <label for="boarding">Boarding Point:</label>
+          <select
+            {{on "change" (fn this.handleField "selectedBoardingId")}}
+            id="boarding"
+            class="dropdown-select"
+          >
+            <option disabled selected>Select</option>
+            {{#each @model.boardingPoints as |point|}}
+              <option value={{point.locationId}}>{{point.locationName}}</option>
+            {{/each}}
+          </select>
+        </div>
+
+        <div class="dropdown-group">
+          <label for="dropping">Dropping Point:</label>
+          <select
+            {{on "change" (fn this.handleField "selectedDroppingId")}}
+            id="dropping"
+            class="dropdown-select"
+          >
+            <option disabled selected>Select</option>
+            {{#each @model.droppingPoints as |point|}}
+              <option value={{point.locationId}}>{{point.locationName}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <br /><br />
+      <div>
+        <h2>Enter Passenger Details</h2>
+      </div>
+
+      <br />
+
+      {{#each this.bookingData.selectedSeats as |seat|}}
+        <div class="passenger-details-container">
+
+          <h3>Seat No: {{seat.seatNumber}}</h3>
+          <input
+            class="passenger-name-input"
+            type="text"
+            placeholder="Passenger Name"
+            {{on
+              "input"
+              (fn this.handleNameAge "passengerName" seat.scheduledSeatId)
+            }}
+          />
+          <input
+            max="100"
+            class="passenger-age-input"
+            type="number"
+            placeholder="Age"
+            {{on
+              "input"
+              (fn this.handleNameAge "passengerAge" seat.scheduledSeatId)
+            }}
+          />
+        </div>
+
+      {{/each}}
+
+      <button
+        class="proceed-payment-btn"
+        type="button"
+        {{on "click" this.handlePayment}}
+      >Pay Now</button>
+    </div>
+
+  {{else}}
+    <p class="loading-text">Loading schedule...</p>
+  {{/if}}
+
+</div>

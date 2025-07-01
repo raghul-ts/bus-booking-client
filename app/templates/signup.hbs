@@ -1,0 +1,33 @@
+{{page-title "Signup"}}
+{{outlet}}
+
+<div class="auth-container">
+  <h2 class="auth-title">Signup</h2>
+  <br><br>
+  <input
+    type="text"
+    placeholder="Username"
+    class="auth-input"
+    {{on "input" this.updateUsername}}
+  />
+  <br><br>
+  
+  <input
+    type="password"
+    placeholder="Password"
+    class="auth-input"
+    {{on "input" this.updatePassword}}
+  />
+  <br><br><br>
+  
+  <button class="auth-button" type="button" {{on "click" this.signup}}>Signup</button>
+  <br>
+  <p class="auth-error">{{this.userExist}}</p>
+  <br><br>
+  <p class="auth-switch">
+    
+    Already have an account? <LinkTo @route="login" class="auth-link">
+        Login here
+    </LinkTo>
+  </p>
+</div>
